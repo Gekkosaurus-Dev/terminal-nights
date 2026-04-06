@@ -1,0 +1,28 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://siq8sv1mpgct"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_lqf0e"]
+
+[sub_resource type="AnimationNodeAnimation" id="11"]
+animation = &"cam_scroll"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_8101j"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wwwfo"]
+animation = &"static_boot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ahawi"]
+animation = &"static_idle"
+
+[resource]
+nodes/output/position = Vector2(680, 40)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_lqf0e")
+nodes/Add2/position = Vector2(460, 0)
+nodes/CameraScroll/node = SubResource("11")
+nodes/CameraScroll/position = Vector2(260, 220)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_8101j")
+nodes/OneShot/position = Vector2(260, -60)
+nodes/boot/node = SubResource("AnimationNodeAnimation_wwwfo")
+nodes/boot/position = Vector2(60, 60)
+nodes/idle/node = SubResource("AnimationNodeAnimation_ahawi")
+nodes/idle/position = Vector2(60, -80)
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"OneShot", &"Add2", 1, &"CameraScroll", &"OneShot", 0, &"idle", &"OneShot", 1, &"boot"]
