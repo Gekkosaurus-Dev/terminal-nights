@@ -32,6 +32,7 @@ func update_feeds(feeds_to_update: Array[int]) -> void:
 		if current_feed == i:
 			play_static()
 
+# This function gets called when one of the cam map buttons get pressed
 func switch_feed(new_feed: int) -> void:
 	# This handles camera switching, but blocks it when clicking the same camera button
 	if current_feed != new_feed:
@@ -44,6 +45,14 @@ func switch_feed(new_feed: int) -> void:
 		all_buttons[new_feed].disabled = true
 		
 		current_feed = new_feed
+		
+		var room_state = rooms[new_feed]
+		# if its cam 5 + construct is there, trigger the run
+		if (new_feed == 4) and room_state[4] == 1:
+			print("construct should run here")
+		# check if neko is on this screen
+		if room_state[0] == 1:
+			print("BOO NEKO IS HERE!")
 
 func play_static() -> void:
 	animtree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

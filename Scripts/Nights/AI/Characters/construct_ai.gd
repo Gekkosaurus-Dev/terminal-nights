@@ -17,6 +17,7 @@ func move_options() -> void:
 			2:
 				move_to(ROOM_05,State.PRESENT) #phase 4
 				state = Constr_states.PHASE_4
+				print("construct left for the hallway chat")
 				#trigger attack after opening left hall cam OR after 25s passed
 			3:
 				move_to(ROOM_04,State.PRESENT,-step)
