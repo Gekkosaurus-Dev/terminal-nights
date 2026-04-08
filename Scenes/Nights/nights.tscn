@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cthhku8fsrdeq"]
 
 [ext_resource type="Script" uid="uid://babox67oh2xx3" path="res://Scripts/Nights/Office/office_manager.gd" id="1_pp75g"]
+[ext_resource type="Texture2D" uid="uid://drtp7nd2amxxk" path="res://Graphics/jumpscares/jumpscare-placeholder-sheet.png" id="1_tf7aw"]
 [ext_resource type="Texture2D" uid="uid://phi6nmdhexow" path="res://Graphics/Office/office2.png" id="2_hvcnl"]
 [ext_resource type="Script" uid="uid://bencescb72ut2" path="res://Scripts/Nights/Office/office_scrolling.gd" id="3_ejiio"]
 [ext_resource type="Texture2D" uid="uid://2hwki8rcehtm" path="res://icon.svg" id="4_lu3yo"]
@@ -31,6 +32,81 @@
 [ext_resource type="Script" uid="uid://d1gmg3fw0np6k" path="res://Scripts/Nights/AI/Characters/idol_ai.gd" id="24_rkp18"]
 [ext_resource type="Script" uid="uid://dlvdypqimmxb7" path="res://Scripts/Nights/AI/Characters/construct_ai.gd" id="25_1ojnv"]
 [ext_resource type="Script" uid="uid://bntwur6lh44vb" path="res://Scripts/Nights/AI/Characters/keeper_ai.gd" id="26_e71s1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5e34"]
+atlas = ExtResource("1_tf7aw")
+region = Rect2(0, 3240, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h7ju"]
+atlas = ExtResource("1_tf7aw")
+region = Rect2(0, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khy4v"]
+atlas = ExtResource("1_tf7aw")
+region = Rect2(0, 4320, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egk1u"]
+atlas = ExtResource("1_tf7aw")
+region = Rect2(0, 2160, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xftyl"]
+atlas = ExtResource("1_tf7aw")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6tga"]
+atlas = ExtResource("1_tf7aw")
+region = Rect2(0, 5400, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oovhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5e34")
+}],
+"loop": true,
+"name": &"bandit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h7ju")
+}],
+"loop": true,
+"name": &"construct",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khy4v")
+}],
+"loop": true,
+"name": &"hacker",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egk1u")
+}],
+"loop": true,
+"name": &"idol",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xftyl")
+}],
+"loop": true,
+"name": &"keeper",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6tga")
+}],
+"loop": true,
+"name": &"neko",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0qos"]
 size = Vector2(256, 256)
@@ -531,6 +607,13 @@ shader_parameter/fov = 0.32
 shader_parameter/stretch = Vector2(54, 27)
 
 [node name="Nights" type="Node2D" unique_id=1678081062]
+
+[node name="Jumpscares" type="AnimatedSprite2D" parent="." unique_id=543804810]
+visible = false
+z_index = 1
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_oovhi")
+animation = &"construct"
 
 [node name="OfficeElements" type="Node2D" parent="." unique_id=2026799483 node_paths=PackedStringArray("office")]
 script = ExtResource("1_pp75g")

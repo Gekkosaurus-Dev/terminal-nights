@@ -12,4 +12,5 @@ func move_options() -> void:
 			move_to(ROOM_08)
 		3:
 			# Returns to start position
-			move_to(ROOM_01,State.PRESENT,-step)
+			move_to(ROOM_07,State.PRESENT)
+			step = 1

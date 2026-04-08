@@ -45,15 +45,30 @@ func switch_feed(new_feed: int) -> void:
 		all_buttons[new_feed].disabled = true
 		
 		current_feed = new_feed
+		check_whos_on_camera(new_feed)
 		
-		var room_state = rooms[new_feed]
-		# if its cam 5 + construct is there, trigger the run
-		if (new_feed == 4) and room_state[4] == 1:
-			print("construct should run here")
-		# check if neko is on this screen
-		if room_state[0] == 1:
-			print("BOO NEKO IS HERE!")
 
+func check_whos_on_camera(new_feed):
+	var room_state: Array = rooms[new_feed]
+	var room_feed: Sprite2D = all_feeds[new_feed]
+	if room_state[0] == 1: # neko
+		print("BOO NEKO IS HERE!")
+	elif room_state[2] == 1: # bandit
+		print("bandit on cams")
+		pass
+	elif room_state[4] == 1: # construct
+		# if its cam 5 + construct is there, trigger the run
+		if (new_feed == 4):
+			print("construct should run here")
+			play_construct_run(room_feed)
+	
+func play_construct_run(room_feed):
+	for frame in range(4,12):
+		room_feed.frame = frame
+		await get_tree().create_timer(0.1).timeout
+	room_feed.frame = 0
+	print("construct kills you")
+	
 func play_static() -> void:
 	animtree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	animtree.advance(0) # this fixes a problem where the static plays 1 frame too late
