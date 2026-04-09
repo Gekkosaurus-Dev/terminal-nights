@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://babox67oh2xx3" path="res://Scripts/Nights/Office/office_manager.gd" id="1_pp75g"]
 [ext_resource type="Texture2D" uid="uid://drtp7nd2amxxk" path="res://Graphics/jumpscares/jumpscare-placeholder-sheet.png" id="1_tf7aw"]
-[ext_resource type="Texture2D" uid="uid://phi6nmdhexow" path="res://Graphics/Office/office2.png" id="2_hvcnl"]
 [ext_resource type="Script" uid="uid://bencescb72ut2" path="res://Scripts/Nights/Office/office_scrolling.gd" id="3_ejiio"]
+[ext_resource type="Texture2D" uid="uid://ca6tph0fb0wpg" path="res://Graphics/Office/office3.png" id="3_tf7aw"]
 [ext_resource type="Texture2D" uid="uid://2hwki8rcehtm" path="res://icon.svg" id="4_lu3yo"]
 [ext_resource type="Script" uid="uid://cyt78opurb0y6" path="res://Scripts/Nights/tablet_manager.gd" id="5_h71ec"]
 [ext_resource type="Script" uid="uid://n6xetcvp8tiv" path="res://Scripts/Nights/Office/button_scroll.gd" id="5_hvcnl"]
@@ -110,6 +110,104 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0qos"]
 size = Vector2(256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_162og"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 4500, 3000, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbnlb"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 3000, 3000, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nid72"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 1500, 3000, 1500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2gb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_162og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbnlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nid72")
+}],
+"loop": false,
+"name": &"close",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nid72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbnlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_162og")
+}],
+"loop": false,
+"name": &"open",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2gb6"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 9000, 3000, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0txpj"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 7500, 3000, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyeqi"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 6000, 3000, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uho0t"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 6000, 3000, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_del28"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 7500, 3000, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl3ap"]
+atlas = ExtResource("3_tf7aw")
+region = Rect2(0, 9000, 3000, 1500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7bti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2gb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0txpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyeqi")
+}],
+"loop": false,
+"name": &"close",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uho0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_del28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl3ap")
+}],
+"loop": false,
+"name": &"open",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5glu"]
 atlas = ExtResource("6_1oog2")
@@ -620,14 +718,15 @@ script = ExtResource("1_pp75g")
 office = NodePath("Office")
 
 [node name="Office" type="Sprite2D" parent="OfficeElements" unique_id=1653127644]
-texture = ExtResource("2_hvcnl")
+texture = ExtResource("3_tf7aw")
 centered = false
 offset = Vector2(-540, -210)
+vframes = 7
 script = ExtResource("3_ejiio")
 
 [node name="Buttons" type="Node2D" parent="OfficeElements/Office" unique_id=360064994]
 
-[node name="ButtonExample" type="Sprite2D" parent="OfficeElements/Office/Buttons" unique_id=1410502720]
+[node name="Left_Door_Button" type="Sprite2D" parent="OfficeElements/Office/Buttons" unique_id=1410502720]
 position = Vector2(24, 662)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_lu3yo")
@@ -635,15 +734,15 @@ script = ExtResource("5_hvcnl")
 x_speed = 210
 left_clamp = -400
 
-[node name="Area2D" type="Area2D" parent="OfficeElements/Office/Buttons/ButtonExample" unique_id=1748716309]
+[node name="Area2D" type="Area2D" parent="OfficeElements/Office/Buttons/Left_Door_Button" unique_id=1748716309]
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeElements/Office/Buttons/ButtonExample/Area2D" unique_id=141294113]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeElements/Office/Buttons/Left_Door_Button/Area2D" unique_id=141294113]
 z_index = 50
 shape = SubResource("RectangleShape2D_a0qos")
 
-[node name="ButtonExample2" type="Sprite2D" parent="OfficeElements/Office/Buttons" unique_id=852608876]
+[node name="Vent_Button" type="Sprite2D" parent="OfficeElements/Office/Buttons" unique_id=852608876]
 position = Vector2(587, 380)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_lu3yo")
@@ -651,15 +750,15 @@ script = ExtResource("5_hvcnl")
 x_speed = -350
 left_clamp = -800
 
-[node name="Area2D" type="Area2D" parent="OfficeElements/Office/Buttons/ButtonExample2" unique_id=2051984588]
+[node name="Area2D" type="Area2D" parent="OfficeElements/Office/Buttons/Vent_Button" unique_id=2051984588]
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeElements/Office/Buttons/ButtonExample2/Area2D" unique_id=1250420118]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeElements/Office/Buttons/Vent_Button/Area2D" unique_id=1250420118]
 z_index = 50
 shape = SubResource("RectangleShape2D_a0qos")
 
-[node name="ButtonExample3" type="Sprite2D" parent="OfficeElements/Office/Buttons" unique_id=1105965537]
+[node name="Right_Door_Button" type="Sprite2D" parent="OfficeElements/Office/Buttons" unique_id=1105965537]
 position = Vector2(1838, 653)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_lu3yo")
@@ -667,13 +766,25 @@ script = ExtResource("5_hvcnl")
 x_speed = -210
 right_clamp = 400
 
-[node name="Area2D" type="Area2D" parent="OfficeElements/Office/Buttons/ButtonExample3" unique_id=1268868194]
+[node name="Area2D" type="Area2D" parent="OfficeElements/Office/Buttons/Right_Door_Button" unique_id=1268868194]
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeElements/Office/Buttons/ButtonExample3/Area2D" unique_id=1427223194]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeElements/Office/Buttons/Right_Door_Button/Area2D" unique_id=1427223194]
 z_index = 50
 shape = SubResource("RectangleShape2D_a0qos")
+
+[node name="Left_Door" type="AnimatedSprite2D" parent="OfficeElements/Office" unique_id=133595699]
+z_index = -1
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_e2gb6")
+animation = &"close"
+
+[node name="Right_Door" type="AnimatedSprite2D" parent="OfficeElements/Office" unique_id=1177347368]
+z_index = -1
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_x7bti")
+animation = &"close"
 
 [node name="TabletElements" type="Node2D" parent="." unique_id=1483279072 node_paths=PackedStringArray("camera", "office")]
 z_index = 15
@@ -993,9 +1104,8 @@ offset_bottom = 1080.0
 mouse_filter = 2
 
 [connection signal="tablet_free" from="OfficeElements" to="TabletElements" method="_on_office_elements_tablet_free"]
-[connection signal="input_event" from="OfficeElements/Office/Buttons/ButtonExample/Area2D" to="OfficeElements" method="_on_area_2d_input_event"]
-[connection signal="input_event" from="OfficeElements/Office/Buttons/ButtonExample2/Area2D" to="OfficeElements" method="_on_area_2d_input_event"]
-[connection signal="input_event" from="OfficeElements/Office/Buttons/ButtonExample3/Area2D" to="OfficeElements" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="OfficeElements/Office/Buttons/Left_Door_Button/Area2D" to="OfficeElements" method="_on_left_button_pressed"]
+[connection signal="input_event" from="OfficeElements/Office/Buttons/Right_Door_Button/Area2D" to="OfficeElements" method="_on_right_button_pressed"]
 [connection signal="brighten_office" from="TabletElements" to="OfficeElements" method="_on_tablet_elements_brighten_office"]
 [connection signal="darken_office" from="TabletElements" to="OfficeElements" method="_on_tablet_elements_darken_office"]
 [connection signal="animation_finished" from="TabletElements/Tablet_Sprite" to="TabletElements" method="_tablet_animation_finished"]
