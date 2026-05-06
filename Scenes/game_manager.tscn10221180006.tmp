@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cetq7xfjwynds"]
+
+[ext_resource type="Script" uid="uid://dlcuvncoxioyx" path="res://Scripts/game_manager.gd" id="1_e5fcp"]
+[ext_resource type="PackedScene" uid="uid://dbpf4fuvn18q8" path="res://Scenes/UI/main_menu.tscn" id="1_oj352"]
+
+[node name="GameManager" type="Node" unique_id=723174747]
+script = ExtResource("1_e5fcp")
+
+[node name="MainMenu" parent="." unique_id=1015856339 node_paths=PackedStringArray("game_manager") instance=ExtResource("1_oj352")]
+game_manager = NodePath("..")
