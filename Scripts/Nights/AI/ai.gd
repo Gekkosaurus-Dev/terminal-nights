@@ -6,6 +6,8 @@ enum State {ABSENT, PRESENT, ALT_1, ALT_2}
 
 @export_enum("Neko", "Hacker", "Bandit", "Idol", "Construct", "Keeper") var character: int
 @export var camera: Camera
+@export var jumpscares: AnimatedSprite2D
+@export var office_manager: Node2D
 
 var ai_level: int
 var step: int
@@ -35,3 +37,18 @@ func move_to(target_room: int, new_state: int = State.PRESENT, move_step: int = 
 	
 	camera.update_feeds([current_room,target_room])
 	current_room = target_room
+
+var left_door_open = true
+var right_door_open = true
+var vent_open = true
+
+func is_door_open(door) -> bool:
+	if door == "left":
+		return office_manager.left_door_open
+	elif door == "right":
+		return office_manager.right_door_open
+	elif door == "vent":
+		return office_manager.vent_open
+	else:
+		print("error. checking invalid door. will assume its closed")
+		return true

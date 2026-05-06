@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://babox67oh2xx3" path="res://Scripts/Nights/Office/office_manager.gd" id="1_pp75g"]
 [ext_resource type="Texture2D" uid="uid://drtp7nd2amxxk" path="res://Graphics/jumpscares/jumpscare-placeholder-sheet.png" id="1_tf7aw"]
+[ext_resource type="Script" uid="uid://ri4mooguphfl" path="res://Scripts/Nights/AI/jumpscares.gd" id="2_3ts1s"]
 [ext_resource type="Script" uid="uid://bencescb72ut2" path="res://Scripts/Nights/Office/office_scrolling.gd" id="3_ejiio"]
 [ext_resource type="Texture2D" uid="uid://ca6tph0fb0wpg" path="res://Graphics/Office/office3.png" id="3_tf7aw"]
 [ext_resource type="Texture2D" uid="uid://2hwki8rcehtm" path="res://icon.svg" id="4_lu3yo"]
@@ -708,10 +709,11 @@ shader_parameter/stretch = Vector2(54, 27)
 
 [node name="Jumpscares" type="AnimatedSprite2D" parent="." unique_id=543804810]
 visible = false
-z_index = 1
+z_index = 5
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_oovhi")
-animation = &"construct"
+animation = &"bandit"
+script = ExtResource("2_3ts1s")
 
 [node name="OfficeElements" type="Node2D" parent="." unique_id=2026799483 node_paths=PackedStringArray("office")]
 script = ExtResource("1_pp75g")
@@ -815,10 +817,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("7_vtngn")
 
-[node name="CameraElements" type="Node2D" parent="." unique_id=1566314234]
+[node name="CameraElements" type="Node2D" parent="." unique_id=1566314234 node_paths=PackedStringArray("jumpscares")]
 visible = false
 script = ExtResource("8_a3j08")
 rooms = Array[Array]([[0, 1, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]])
+jumpscares = NodePath("../Jumpscares")
 
 [node name="CamRooms" type="Node2D" parent="CameraElements" unique_id=1938968411]
 z_index = 15
@@ -1037,45 +1040,55 @@ bandit_level = 20
 idol_level = 20
 construct_level = 20
 
-[node name="Neko" type="Node" parent="CharacterAI" unique_id=685775506 node_paths=PackedStringArray("camera")]
+[node name="Neko" type="Node" parent="CharacterAI" unique_id=685775506 node_paths=PackedStringArray("camera", "jumpscares", "office_manager")]
 script = ExtResource("23_fbex5")
 camera = NodePath("../../CameraElements")
+jumpscares = NodePath("../../Jumpscares")
+office_manager = NodePath("../../OfficeElements")
 
 [node name="NekoTimer" type="Timer" parent="CharacterAI/Neko" unique_id=275923135]
 wait_time = 10.0
 autostart = true
 
-[node name="Hacker" type="Node" parent="CharacterAI" unique_id=1810657217 node_paths=PackedStringArray("camera")]
+[node name="Hacker" type="Node" parent="CharacterAI" unique_id=1810657217 node_paths=PackedStringArray("camera", "jumpscares", "office_manager")]
 script = ExtResource("22_jyxs1")
 character = 1
 camera = NodePath("../../CameraElements")
+jumpscares = NodePath("../../Jumpscares")
+office_manager = NodePath("../../OfficeElements")
 
 [node name="HackerTimer" type="Timer" parent="CharacterAI/Hacker" unique_id=1810057412]
 wait_time = 4.970000000000001
 autostart = true
 
-[node name="Bandit" type="Node" parent="CharacterAI" unique_id=1613056901 node_paths=PackedStringArray("camera")]
+[node name="Bandit" type="Node" parent="CharacterAI" unique_id=1613056901 node_paths=PackedStringArray("camera", "jumpscares", "office_manager")]
 script = ExtResource("23_2lb4s")
 character = 2
 camera = NodePath("../../CameraElements")
+jumpscares = NodePath("../../Jumpscares")
+office_manager = NodePath("../../OfficeElements")
 
 [node name="BanditTimer" type="Timer" parent="CharacterAI/Bandit" unique_id=257728519]
 wait_time = 3.02
 autostart = true
 
-[node name="Idol" type="Node" parent="CharacterAI" unique_id=1676970866 node_paths=PackedStringArray("camera")]
+[node name="Idol" type="Node" parent="CharacterAI" unique_id=1676970866 node_paths=PackedStringArray("camera", "jumpscares", "office_manager")]
 script = ExtResource("24_rkp18")
 character = 3
 camera = NodePath("../../CameraElements")
+jumpscares = NodePath("../../Jumpscares")
+office_manager = NodePath("../../OfficeElements")
 
 [node name="IdolTimer" type="Timer" parent="CharacterAI/Idol" unique_id=1323958808]
 wait_time = 4.98
 autostart = true
 
-[node name="Construct" type="Node" parent="CharacterAI" unique_id=2146439565 node_paths=PackedStringArray("camera")]
+[node name="Construct" type="Node" parent="CharacterAI" unique_id=2146439565 node_paths=PackedStringArray("camera", "jumpscares", "office_manager")]
 script = ExtResource("25_1ojnv")
 character = 4
 camera = NodePath("../../CameraElements")
+jumpscares = NodePath("../../Jumpscares")
+office_manager = NodePath("../../OfficeElements")
 
 [node name="ConstructTimer" type="Timer" parent="CharacterAI/Construct" unique_id=1614503597]
 wait_time = 5.010000000000001
@@ -1088,10 +1101,12 @@ one_shot = true
 wait_time = 25.0
 one_shot = true
 
-[node name="Keeper" type="Node" parent="CharacterAI" unique_id=193662692 node_paths=PackedStringArray("camera")]
+[node name="Keeper" type="Node" parent="CharacterAI" unique_id=193662692 node_paths=PackedStringArray("camera", "jumpscares", "office_manager")]
 script = ExtResource("26_e71s1")
 character = 5
 camera = NodePath("../../CameraElements")
+jumpscares = NodePath("../../Jumpscares")
+office_manager = NodePath("../../OfficeElements")
 
 [node name="KeeperTimer" type="Timer" parent="CharacterAI/Keeper" unique_id=29923334]
 wait_time = 10.0

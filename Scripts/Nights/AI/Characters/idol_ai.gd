@@ -11,5 +11,16 @@ func move_options() -> void:
 		2:
 			move_to(ROOM_08)
 		3:
-			# Returns to start position
-			move_to(ROOM_01,State.PRESENT,-step)
+			# outside door
+			print("IDOL IS AT DA DOOR")
+			move_to(ROOM_08,State.ABSENT)
+			#uhhhh do something so that hes present in the office when you use da light
+		4:
+			# attempt to get into office
+			if is_door_open("right"): #if the door is closed
+				print("idol jumpscare!!!!")
+				jumpscares.play_jumpscare("idol")
+			else:
+				print("thunk!")
+				# returns to starting postition
+				move_to(ROOM_01,State.PRESENT,-step)

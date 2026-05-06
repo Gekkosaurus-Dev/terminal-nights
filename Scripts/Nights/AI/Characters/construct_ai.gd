@@ -5,6 +5,8 @@ enum Constr_states {ACTIVE, LOCKED, COOLDOWN, PHASE_4}
 
 var state = Constr_states.ACTIVE
 
+# construct jumpscare handled by the camera.gd script
+
 func move_options() -> void:
 	# if construct state is not locked or on cooldown it can move
 	if allowed_to_move():

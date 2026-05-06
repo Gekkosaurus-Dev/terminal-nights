@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dnna7ajx7urn5"]
+
+[ext_resource type="Script" uid="uid://6bvrbejt6wdq" path="res://addons/inheritance_viewer/InheritanceView.gd" id="1_s6k42"]
+[ext_resource type="PackedScene" uid="uid://dm2pmrcddjsg8" path="res://addons/inheritance_viewer/scenes/inheritance_viewer_toolbar.tscn" id="2_6svym"]
+[ext_resource type="Resource" uid="uid://bere44pi5vlqg" path="res://addons/inheritance_viewer/inheritance_view_settings.tres" id="2_gm68t"]
+
+[node name="InheritanceViewer" type="GraphEdit" unique_id=815122204 node_paths=PackedStringArray("_toolbar_row", "spacer", "toolbar_margin", "_toolbar", "reorganise_button", "expand_button", "_search_bar")]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_offset = Vector2(-217.90134, -217.51569)
+connection_lines_curvature = 0.0
+connections = Array[Dictionary]([{
+"from_node": &"Base",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Child",
+"to_port": 0
+}, {
+"from_node": &"Node",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"NewBase",
+"to_port": 0
+}, {
+"from_node": &"Node",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Base",
+"to_port": 0
+}, {
+"from_node": &"Child1",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Grandchild2",
+"to_port": 0
+}, {
+"from_node": &"NewBase",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Child2",
+"to_port": 0
+}, {
+"from_node": &"NewBase",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Child1",
+"to_port": 0
+}, {
+"from_node": &"Child1",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Grandchild3",
+"to_port": 0
+}, {
+"from_node": &"Child2",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Grandchild",
+"to_port": 0
+}, {
+"from_node": &"Object",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"Node",
+"to_port": 0
+}])
+zoom = 0.5560538
+show_arrange_button = false
+script = ExtResource("1_s6k42")
+settings = ExtResource("2_gm68t")
+_toolbar_row = NodePath("InheritanceViewerToolbar")
+spacer = NodePath("InheritanceViewerToolbar/Spacer")
+toolbar_margin = NodePath("InheritanceViewerToolbar/ToolbarMargin")
+_toolbar = NodePath("InheritanceViewerToolbar/ToolbarMargin/HBoxContainer")
+reorganise_button = NodePath("InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/ReorganiseButton")
+expand_button = NodePath("InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/ExpandButton")
+_search_bar = NodePath("InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/SearchEdit")
+
+[node name="InheritanceViewerToolbar" parent="." unique_id=1583226405 instance=ExtResource("2_6svym")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+grow_horizontal = 1
+
+[node name="Spacer" parent="InheritanceViewerToolbar" index="0" unique_id=500521508]
+custom_minimum_size = Vector2(0, 64)
+
+[connection signal="pressed" from="InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/ReorganiseButton" to="." method="_reorganise"]
+[connection signal="pressed" from="InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/ExpandButton" to="." method="_on_expand_button_pressed"]
+[connection signal="text_changed" from="InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/SearchEdit" to="." method="_apply_search"]
+[connection signal="toggled" from="InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/StraightLinesButton" to="." method="_on_straight_lines_checked"]
+[connection signal="toggled" from="InheritanceViewerToolbar/ToolbarMargin/HBoxContainer/SyncButton" to="." method="_on_sync_selection_changed"]
+
+[editable path="InheritanceViewerToolbar"]

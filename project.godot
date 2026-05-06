@@ -20,6 +20,10 @@ run/main_scene="res://Scenes/Nights/nights.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DiscordRPCLoader="*uid://cehsq0gc50kqb"
+
 [display]
 
 window/size/viewport_width=1920
@@ -28,6 +32,10 @@ window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/inheritance_viewer/plugin.cfg")
 
 [input]
 

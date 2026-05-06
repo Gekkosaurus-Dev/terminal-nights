@@ -11,5 +11,16 @@ func move_options() -> void:
 		2:
 			move_to(ROOM_06)
 		3:
-			# Returns to start position
-			move_to(ROOM_01,State.PRESENT,-step)
+			# outside door
+			print("HACKER IS AT DA DOOR")
+			move_to(ROOM_06,State.ABSENT)
+			#uhhhh do something so that hes present in the office when you use da light
+		4:
+			# attempt to get into office
+			if is_door_open("left"): #if the door is closed
+				print("hacker jumpscare!!!!")
+				jumpscares.play_jumpscare("hacker")
+			else:
+				print("thunk!")
+				# returns to starting postition
+				move_to(ROOM_01,State.PRESENT,-step)

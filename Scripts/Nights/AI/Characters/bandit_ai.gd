@@ -11,6 +11,17 @@ func move_options() -> void:
 		2:
 			move_to(ROOM_08)
 		3:
-			# Returns to start position
-			move_to(ROOM_07,State.PRESENT)
-			step = 1
+			# outside door
+			print("BANDIT IS AT DA DOOR")
+			move_to(ROOM_08,State.ABSENT)
+			#uhhhh do something so that hes present in the office when you use da light
+		4:
+			# attempt to get into office
+			if is_door_open("right"): #if the door is closed
+				print("bandit jumpscare!!!!")
+				jumpscares.play_jumpscare("bandit")
+			else:
+				print("thunk!")
+				# Returns to start position
+				# not sure if i'll do this, but in fnaf 1 he goes back to room 7, not 1
+				move_to(ROOM_01,State.PRESENT)

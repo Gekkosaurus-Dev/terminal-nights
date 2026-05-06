@@ -3,6 +3,7 @@ class_name Camera
 extends Node2D
 
 @export var rooms: Array[Array]
+@export var jumpscares: AnimatedSprite2D
 
 var current_feed: int = 0
 var all_feeds: Array[Sprite2D]
@@ -68,6 +69,7 @@ func play_construct_run(room_feed):
 		await get_tree().create_timer(0.1).timeout
 	room_feed.frame = 0
 	print("construct kills you")
+	jumpscares.play_jumpscare("construct")
 	
 func play_static() -> void:
 	animtree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
