@@ -1,13 +1,10 @@
-# Cupcakes Framework
+# Terminal Nights
 
-<p align="center">
-<img src=".github/cupcake_logo.svg" width="577" alt="Cupcakes Framework logo">
-</p>
 
-A Five Nights at Freddy's (or FNAF) framework made for Godot 4, with a [Godot 3 version also available](https://github.com/Oplexitie/Cupcakes-Framework/tree/godot3).
+This game is a Five Nights at Freddy's inspired 'fan-game' for [Terminal Horizon](https://terminalhorizonroguelike.carrd.co/), a game which I am the Art Director on.
 
->[!IMPORTANT]
->This framework only contains the very basic necessities to build your FNAF inspired game.
+>[!Credit where credit is due]
+>This game was created with the Cupcakes Framework, which "contains the very basic necessities to build your FNAF inspired game".
 >As such, I will not be adding any features that :
 >  - A - Are very easy to make on your own
 >  - B - Are not necessary for a FNAF like game
